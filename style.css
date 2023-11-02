@@ -1,0 +1,75 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+:root{
+    --bg-color: #F2FAFD;
+}
+.header{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(0, 0, 0);
+    background-image: url('SY.jpg');
+    background-size: contain;
+    background-size: cover;
+    -webkit-clip-path: polygon(0 0, 100% 0%, 0 100%, 0% 100%);
+    clip-path: polygon(0 0, 40% 0, 20% 100%, 0 100%);
+    /* opacity: 0.9; */
+}
+.header1{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(0, 0, 0);
+    background-image: url('SY.jpg');
+    background-size: contain;
+    background-size: cover;
+    -webkit-clip-path: polygon(0 0, 100% 0%, 0 100%, 0% 100%);
+    clip-path: polygon(0 0, 27% 0, 27% 100%, 0% 100%);
+    /* opacity: 0.9; */
+}
+.bg{
+    background-color: #ebf8fcab;
+}
+.cont{
+    height: 100vh;
+    width: 100vw;
+    opacity: .8;
+}
+.tb-text {
+    writing-mode: tb;
+}
+.ws-1{
+    word-spacing: 5%;
+    letter-spacing: 10%;
+}
+.list{
+    list-style: none;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+}
+.list::-webkit-scrollbar { 
+    width: 0 !important;
+    display: none; 
+}
+.list-y{
+    list-style: none;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+}
+.list-y::-webkit-scrollbar { 
+    width: 0 !important;
+    display: none; 
+}
+.home-text{
+    font-size: 4.5rem;
+    font-weight: bolder;
+}
+.earn{
+    color: var(--bg-color);
+    /* -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black; */
+}
+.border-right{
+    border-right: solid rgb(0, 0, 0) 7px;
+}
