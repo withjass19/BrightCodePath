@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <style>
+        h4 {
+            text-align: center;
+            margin-bottom: 3%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid bg">
+        <div class="row header1 position-fixed z-0"></div>
+        <div class="row position-relative z-1 cont">
+            <div class="col-3 p-5">
+                <div id="list-example" class="list-group">
+                    <a class="list-group-item list-group-item-action" href="#list-item-1">Basics</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-2">Data Conversion</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-3">Functions</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-4">1D Arrays</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-5">2D Arrays</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-6">Strings</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-7">OOPs</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-8">Inheritance</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-9">Exception Hanlding</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-10">Interfaces</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-11">Packages</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-12">Input/Output</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-13">Delegation Event Model</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-14">Awt</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-15">Applets</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-16">JDBC</a>
+                </div>
+            </div>
+            <div class="col-9 p-0 d-flex" id="section">
+                <div class="col-11 p-4">
+                    <div class="row">
+                        <div class="col text-center">
+                            <p class="fs-1 fw-bold my-0">Java Tutorial</p>
+                            <p class="fs-4 fw-medium my-0">Practice Questions</p>
+                            <p class="fs-5 fw-normal my-0">Basics</p>
+                        </div>
+                    </div>
+                    <div class="row px-5 mx-5 list-y" style="width: 60vw; height: 75vh;">
+                        <div class="col list-y p-5 mx-5 pt-4 list-y">
+                            <p class='fs-5 fw-semibold'>5. Program to determine whether two matrices are equal.</p>
+                            <p class='fs-6 fw-medium'>Code:</p>
+
+                            <pre class='fw-normal border border-5 rounded-4 p-3 list'>
+import java.util.Scanner;
+
+public class MatrixEquality {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+                                
+        // Get the dimensions of the matrices
+        System.out.print("Enter the number of rows: ");
+        int rows = scanner.nextInt();
+                                
+        System.out.print("Enter the number of columns: ");
+        int columns = scanner.nextInt();
+                                
+        // Create two matrices
+        int[][] matrix1 = new int[rows][columns];
+        int[][] matrix2 = new int[rows][columns];
+                                
+        // Get elements for the first matrix
+        enterMatrixElements(scanner, matrix1, "first");
+                                
+        // Get elements for the second matrix
+        enterMatrixElements(scanner, matrix2, "second");
+                                
+        // Check if the matrices are equal
+        boolean areEqual = areMatricesEqual(matrix1, matrix2);
+                                
+        // Print the matrices and the result of equality check
+        System.out.println("First Matrix:");
+        printMatrix(matrix1);
+                                
+        System.out.println("Second Matrix:");
+        printMatrix(matrix2);
+                                
+        System.out.println("Matrices are " + (areEqual ? "equal." : "not equal."));
+                                
+        scanner.close();
+    }
+                                
+    // Function to enter matrix elements
+    private static void enterMatrixElements(Scanner scanner, int[][] matrix, String matrixName) {
+        System.out.println("Enter elements for the " + matrixName + " matrix:");
+                                
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                System.out.print("Enter element at position [" + i + "][" + j + "]: ");
+                matrix[i][j] = scanner.nextInt();
+            }
+        }
+    }
+                                
+    // Function to check if two matrices are equal
+    private static boolean areMatricesEqual(int[][] matrix1, int[][] matrix2) {
+        if (matrix1.length != matrix2.length || matrix1[0].length != matrix2[0].length) {
+            return false;
+        }
+                                
+        for (int i = 0; i < matrix1.length; i++) {
+            for (int j = 0; j < matrix1[0].length; j++) {
+                if (matrix1[i][j] != matrix2[i][j]) {
+                    return false;
+                }
+            }
+        }
+                                
+        return true;
+    }
+                                
+    // Function to print a matrix
+    private static void printMatrix(int[][] matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println(); // Move to the next row
+        }
+        System.out.println(); // Separate matrices by a blank line
+    }
+}
+</pre>
+                            <p class='fs-6 fw-medium pt-5'>Output:</p>
+                            <p class='fw-normal border border-5 rounded-4 p-3'>
+                                Enter the number of rows: 2 <br>
+Enter the number of columns: 2 <br>
+Enter elements for the first matrix: <br>
+Enter element at position [0][0]: 1 <br>
+Enter element at position [0][1]: 2 <br>
+Enter element at position [1][0]: 3 <br>
+Enter element at position [1][1]: 4 <br>
+Enter elements for the second matrix: <br>
+Enter element at position [0][0]: 1 <br>
+Enter element at position [0][1]: 2 <br>
+Enter element at position [1][0]: 3 <br>
+Enter element at position [1][1]: 4 <br>
+ <br>
+First Matrix: <br>
+1 2  <br>
+3 4  <br>
+ <br>
+Second Matrix: <br>
+1 2  <br>
+3 4  <br>
+ <br>
+Matrices are equal. <br>
+
+                            </p>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1 text-center border border-2 border-top-0 border-end-0 border-buttom-0 border-dark">
+                    <p class="fw-medium bg mb-4 mt-3 py-3 text-primary" style="font-size: 55px;">B</p>
+                    <ul class="nav text-center tb-text ms-2 p-0">
+                        <li class="nav-item p-0">
+                            <a class="nav-link active m-0 p-4 pt-5" id="home-link" aria-current="page" href="index.html"
+                                style="letter-spacing: 2.5px;">Home</a>
+                        </li>
+                        <li class="nav-item p-0">
+                            <a class="nav-link  m-0 p-4 pt-5" href="index.html" id="tutorial-link"
+                                style="letter-spacing: 2.5px;">Tutorials</a>
+                        </li>
+                        <li class="nav-item p-0">
+                            <a class="nav-link m-0 p-4 pt-5" href="index.html" id="about-link"
+                                style="letter-spacing: 2.5px;">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
