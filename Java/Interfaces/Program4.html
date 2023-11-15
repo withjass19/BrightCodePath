@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <style>
+        h4{
+            text-align: center;
+            margin-bottom: 3%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid bg">
+        <div class="row header1 position-fixed z-0"></div>
+        <div class="row position-relative z-1 cont">
+            <div class="col-3 p-5">
+                <div id="list-example" class="list-group">
+                    <a class="list-group-item list-group-item-action" href="#list-item-1">Basics</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-2">Data Conversion</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-3">Functions</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-4">1D Arrays</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-5">2D Arrays</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-6">Strings</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-7">OOPs</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-8">Inheritance</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-9">Exception Hanlding</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-10">Interfaces</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-11">Packages</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-12">Input/Output</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-13">Delegation Event Model</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-14">Awt</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-15">Applets</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-16">JDBC</a>
+                </div>
+            </div>
+            <div class="col-9 p-0 d-flex" id="section">
+                <div class="col-11 p-4">
+                    <div class="row">
+                        <div class="col text-center">
+                            <p class="fs-1 fw-bold my-0">Java Tutorial</p>
+                            <p class="fs-4 fw-medium my-0">Practice Questions</p>
+                            <p class="fs-5 fw-normal my-0">Basics</p>
+                        </div>
+                    </div>
+                    <div class="row px-5 mx-5 list-y" style="width: 60vw; height: 75vh;">
+                        <div class="col list-y p-5 mx-5 pt-4 list-y">
+                            <p class='fs-5 fw-semibold'>4. Write a Java programming to create a banking system with three classes - Bank, Account, SavingsAccount, and CurrentAccount. The bank should have a list of accounts and methods for adding them. Accounts should be an interface with methods to deposit, withdraw, calculate interest, and view balances. SavingsAccount and CurrentAccount should implement the Account interface and have their own unique methods.</p>
+                                    <p class='fs-6 fw-medium'>Code:</p>
+                                    <!-- {/* <img src={code1} class='rounded-3 bg-dark p-2 mt-3' alt="" srcset="" width='600px' /> */} -->
+                                    <pre class='fw-normal border border-5 rounded-4 p-3 list'>
+// Interface for common account operations
+interface Account {
+    void deposit(double amount);
+    void withdraw(double amount);
+    double calculateInterest();
+    double getBalance();
+}
+                                        
+// SavingsAccount class implementing Account interface
+class SavingsAccount implements Account {
+    private double balance;
+    private double interestRate;
+                                        
+    public SavingsAccount(double initialBalance, double interestRate) {
+        this.balance = initialBalance;
+        this.interestRate = interestRate;
+    }
+                                        
+                                            <!-- @Override -->
+    public void deposit(double amount) {
+        balance += amount;
+    }
+                                        
+    <!-- @Override -->
+    public void withdraw(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+        } else {
+            System.out.println("Insufficient funds!");
+        }
+    }
+                                        
+    <!-- @Override -->
+    public double calculateInterest() {
+        return balance * interestRate;
+    }
+                                        
+    <!-- @Override -->
+    public double getBalance() {
+        return balance;
+    }
+                                        
+    // Additional method specific to SavingsAccount
+    public void applyBonus() {
+        balance += 10; // Just an example, you can implement your own logic
+    }
+}
+                                        
+// CurrentAccount class implementing Account interface
+class CurrentAccount implements Account {
+    private double balance;
+    private double overdraftLimit;
+                                        
+    public CurrentAccount(double initialBalance, double overdraftLimit) {
+        this.balance = initialBalance;
+        this.overdraftLimit = overdraftLimit;
+    }
+                                        
+                                            <!-- @Override -->
+    public void deposit(double amount) {
+        balance += amount;
+    }
+                                        
+                                            <!-- @Override -->
+    public void withdraw(double amount) {
+        if (amount <= balance + overdraftLimit) {
+            balance -= amount;
+        } else {
+            System.out.println("Insufficient funds!");
+        }
+    }
+                                        
+    <!-- @Override -->
+    public double calculateInterest() {
+        // Current accounts typically don't earn interest
+        return 0;
+    }
+                                        
+    <!-- @Override -->
+    public double getBalance() {
+        return balance;
+    }
+                                        
+    // Additional method specific to CurrentAccount
+    public void issueOverdraft() {
+        // Logic for issuing an overdraft
+        System.out.println("Overdraft issued!");
+    }
+}
+                                        
+// Bank class to manage accounts
+class Bank {
+    private Account[] accounts;
+    private int numAccounts;
+
+    public Bank(int maxAccounts) {
+        accounts = new Account[maxAccounts];
+        numAccounts = 0;
+    }
+                                        
+    public void addAccount(Account account) {
+        if (numAccounts < accounts.length) {
+            accounts[numAccounts++] = account;
+        } else {
+            System.out.println("Cannot add more accounts. Bank is full.");
+        }
+    }
+                                        
+    public void displayAccountDetails() {
+        System.out.println("Bank Accounts:");
+        for (int i = 0; i < numAccounts; i++) {
+            System.out.println("Account " + (i + 1) + ": Balance = " + accounts[i].getBalance());
+        }
+    }
+}
+                                        
+// Main class
+public class BankingSystemExample {
+    public static void main(String[] args) {
+        // Create a bank
+        Bank myBank = new Bank(5);
+                                        
+        // Create accounts and add them to the bank
+        SavingsAccount savingsAccount = new SavingsAccount(1000, 0.05);
+        CurrentAccount currentAccount = new CurrentAccount(2000, 500);
+                                        
+        myBank.addAccount(savingsAccount);
+        myBank.addAccount(currentAccount);
+                                        
+        // Perform operations on accounts
+        savingsAccount.deposit(500);
+        currentAccount.withdraw(300);
+                                        
+        // Display account details
+        myBank.displayAccountDetails();
+    }
+}                                                                                                                    
+</pre>
+        
+                                    <p class='fs-6 fw-medium pt-5'>Output:</p>
+                                    <p class='fw-normal border border-5 rounded-4 p-3'>
+                                        Bank Accounts: <br>
+Account 1: Balance = 1705.0 <br>
+Account 2: Balance = 1700.0
+                                    </p>
+                                </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1 text-center border border-2 border-top-0 border-end-0 border-buttom-0 border-dark">
+                    <p class="fw-medium bg mb-4 mt-3 py-3 text-primary" style="font-size: 55px;">B</p>
+                    <ul class="nav text-center tb-text ms-2 p-0">
+                        <li class="nav-item p-0">
+                            <a class="nav-link active m-0 p-4 pt-5" id="home-link" aria-current="page" href="index.html"
+                                style="letter-spacing: 2.5px;">Home</a>
+                        </li>
+                        <li class="nav-item p-0">
+                            <a class="nav-link  m-0 p-4 pt-5" href="index.html" id="tutorial-link"
+                                style="letter-spacing: 2.5px;">Tutorials</a>
+                        </li>
+                        <li class="nav-item p-0">
+                            <a class="nav-link m-0 p-4 pt-5" href="index.html" id="about-link"
+                                style="letter-spacing: 2.5px;">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
