@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <style>
+        h4 {
+            text-align: center;
+            margin-bottom: 3%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid bg">
+        <div class="row header1 position-fixed z-0"></div>
+        <div class="row position-relative z-1 cont">
+            <div class="col-3 p-5">
+                <div id="list-example" class="list-group">
+                    <a class="list-group-item list-group-item-action" href="#list-item-1">Basics</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-2">Data Conversion</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-3">Functions</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-4">1D Arrays</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-5">2D Arrays</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-6">Strings</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-7">OOPs</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-8">Inheritance</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-9">Exception Handling</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-10">Interfaces</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-11">Packages</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-12">Input/Output</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-13">Delegation Event Model</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-14">Awt</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-15">Applets</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-16">JDBC</a>
+                </div>
+            </div>
+            <div class="col-9 p-0 d-flex" id="section">
+                <div class="col-11 p-4">
+                    <div class="row">
+                        <div class="col text-center">
+                            <p class="fs-1 fw-bold my-0">Java Tutorial</p>
+                            <p class="fs-4 fw-medium my-0">Practice Questions</p>
+                            <p class="fs-5 fw-normal my-0">Functions</p>
+                        </div>
+                    </div>
+                    <div class="row px-5 mx-5 list-y" style="width: 60vw; height: 75vh;">
+                        <div class="col list-y p-5 mx-5 pt-4 list-y">
+                            <p class='fs-5 fw-semibold'>10. Write a Java method to count the number of digits in an integer with the value 2. The integer may be assumed to be non-negative.</p>
+                            <p class='fs-6 fw-medium'>Code:</p>
+
+                            <pre class='fw-normal border border-5 rounded-4 p-3 list'>
+public class CountDigitTwo {
+
+    // Method to count the number of occurrences of digit 2 in a non-negative integer
+    public static int countDigitTwo(int number) {
+        // Convert the integer to a string for easier digit manipulation
+        String numberStr = String.valueOf(number);
+                                
+        // Initialize the count of digit 2
+        int count = 0;
+                                
+        // Iterate through each character in the string
+        for (char digitChar : numberStr.toCharArray()) {
+            // Check if the character is '2'
+            if (digitChar == '2') {
+                count++;
+            }
+        }
+                                
+        return count;
+    }
+                                
+    public static void main(String[] args) {
+        // Example usage:
+        int num1 = 12345;
+        int num2 = 22222;
+                                
+        System.out.println("Number of occurrences of digit 2 in " + num1 + ": " + countDigitTwo(num1));
+        System.out.println("Number of occurrences of digit 2 in " + num2 + ": " + countDigitTwo(num2));
+    }
+}                                
+</pre>
+                            <p class='fs-6 fw-medium pt-5'>Output:</p>
+                            <p class='fw-normal border border-5 rounded-4 p-3'>
+                                Number of occurrences of digit 2 in 12345: 1 <br>
+Number of occurrences of digit 2 in 22222: 5
+                            </p>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1 text-center border border-2 border-top-0 border-end-0 border-buttom-0 border-dark">
+                    <p class="fw-medium bg mb-4 mt-3 py-3 text-primary" style="font-size: 55px;">B</p>
+                    <ul class="nav text-center tb-text ms-2 p-0">
+                        <li class="nav-item p-0">
+                            <a class="nav-link active m-0 p-4 pt-5" id="home-link" aria-current="page" href="index.html"
+                                style="letter-spacing: 2.5px;">Home</a>
+                        </li>
+                        <li class="nav-item p-0">
+                            <a class="nav-link  m-0 p-4 pt-5" href="index.html" id="tutorial-link"
+                                style="letter-spacing: 2.5px;">Tutorials</a>
+                        </li>
+                        <li class="nav-item p-0">
+                            <a class="nav-link m-0 p-4 pt-5" href="index.html" id="about-link"
+                                style="letter-spacing: 2.5px;">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
