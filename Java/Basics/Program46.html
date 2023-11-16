@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <br><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -55,35 +55,35 @@
                             <p class='fs-5 fw-semibold'>46. Java Program To Calculate CGPA Percentage.</p>
                             <p class='fs-6 fw-medium'>Code:</p>
                             <p class='fw-normal border border-5 rounded-4 p-3'>
-                                import java.util.Scanner;
-                                class CGPAPercentageCalculator &#123;
-                                public static void main(String[] args) &#123;
-                                Scanner input = new Scanner(System.in);
-
-                                System.out.print("Enter the number of Subject: ");
-                                int numCourses = input.nextInt();
-
-                                double totalCGPA = 0.0;
-                                double totalCredits = 0.0;
-
-                                for (int i = 1; i &lt;= numCourses; i++) &#123;
-                                System.out.printf("Enter CGPA for Subject %d: ", i);
-                                double cgpa = input.nextDouble();
-
-                                System.out.printf("Enter Credits for Subject %d: ", i);
-                                int credits = input.nextInt();
-
-                                totalCGPA += cgpa * credits;
-                                totalCredits += credits;
-                                &#125;
-
-                                if (totalCredits == 0) &#123;
-                                System.out.println("Error: Total credits cannot be zero.");
-                                &#125; else &#123;
-                                double cgpaPercentage = (totalCGPA / totalCredits) * 10;
-                                System.out.printf("CGPA Percentage: %.2f%%\n", cgpaPercentage);
-                                &#125;
-                                &#125;
+                                import java.util.Scanner; <br>
+                                class CGPAPercentageCalculator &#123; <br>
+                                public static void main(String[] args) &#123; <br>
+                                Scanner input = new Scanner(System.in); <br>
+ <br>
+                                System.out.print("Enter the number of Subject: "); <br>
+                                int numCourses = input.nextInt(); <br>
+ <br>
+                                double totalCGPA = 0.0; <br>
+                                double totalCredits = 0.0; <br>
+ <br>
+                                for (int i = 1; i &lt;= numCourses; i++) &#123; <br>
+                                System.out.printf("Enter CGPA for Subject %d: ", i); <br>
+                                double cgpa = input.nextDouble(); <br>
+ <br>
+                                System.out.printf("Enter Credits for Subject %d: ", i); <br>
+                                int credits = input.nextInt(); <br>
+ <br>
+                                totalCGPA += cgpa * credits; <br>
+                                totalCredits += credits; <br>
+                                &#125; <br>
+ <br>
+                                if (totalCredits == 0) &#123; <br>
+                                System.out.println("Error: Total credits cannot be zero."); <br>
+                                &#125; else &#123; <br>
+                                double cgpaPercentage = (totalCGPA / totalCredits) * 10; <br>
+                                System.out.printf("CGPA Percentage: %.2f%%\n", cgpaPercentage); <br>
+                                &#125; <br>
+                                &#125; <br>
                                 &#125;
                             </p>
 
