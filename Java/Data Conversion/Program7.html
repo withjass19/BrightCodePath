@@ -52,42 +52,27 @@
                     </div>
                     <div class="row px-5 mx-5 list-y" style="width: 60vw; height: 75vh;">
                         <div class="col list-y p-5 mx-5 pt-4 list-y">
-                            <p class='fs-5 fw-semibold'>1. How to convert String to int.</p>
+                            <p class='fs-5 fw-semibold'>7. How to convert String to double.</p>
                             <p class='fs-6 fw-medium'>Code:</p>
 
                             <pre class='fw-normal border border-5 rounded-4 p-3 list'>
-public class SmallestNumberFinder {
+public class StringToDoubleConverter {
 
-    // Method to find the smallest number among three numbers
-    public static int findSmallestNumber(int num1, int num2, int num3) {
-        int smallest = num1;
-                                
-        if (num2 < smallest) {
-            smallest = num2;
-        }
-                                
-        if (num3 < smallest) {
-            smallest = num3;
-        }
-                                
-        return smallest;
-    }
-                                
     public static void main(String[] args) {
-        // Example usage:
-        int num1 = 10;
-        int num2 = 5;
-        int num3 = 8;
+        // Example string containing a double value
+        String doubleStr = "123.45";
                                 
-        int smallestNumber = findSmallestNumber(num1, num2, num3);
+        // Convert the string to a double using parseDouble
+        double convertedDouble = Double.parseDouble(doubleStr);
                                 
-        System.out.println("The smallest number among " + num1 + ", " + num2 + ", and " + num3 + " is: " + smallestNumber);
+        // Print the result
+        System.out.println("Converted double: " + convertedDouble);
     }
-}
+}                                
 </pre>
                             <p class='fs-6 fw-medium pt-5'>Output:</p>
                             <p class='fw-normal border border-5 rounded-4 p-3'>
-                                The smallest number among 10, 5, and 8 is: 5
+                                Converted double: 123.45
                             </p>
                             </p>
                         </div>

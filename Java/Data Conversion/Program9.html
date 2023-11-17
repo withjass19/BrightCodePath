@@ -52,42 +52,39 @@
                     </div>
                     <div class="row px-5 mx-5 list-y" style="width: 60vw; height: 75vh;">
                         <div class="col list-y p-5 mx-5 pt-4 list-y">
-                            <p class='fs-5 fw-semibold'>1. How to convert String to int.</p>
+                            <p class='fs-5 fw-semibold'>9. How to convert String to Date.</p>
                             <p class='fs-6 fw-medium'>Code:</p>
 
                             <pre class='fw-normal border border-5 rounded-4 p-3 list'>
-public class SmallestNumberFinder {
-
-    // Method to find the smallest number among three numbers
-    public static int findSmallestNumber(int num1, int num2, int num3) {
-        int smallest = num1;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
                                 
-        if (num2 < smallest) {
-            smallest = num2;
-        }
-                                
-        if (num3 < smallest) {
-            smallest = num3;
-        }
-                                
-        return smallest;
-    }
+public class StringToDateConverter {
                                 
     public static void main(String[] args) {
-        // Example usage:
-        int num1 = 10;
-        int num2 = 5;
-        int num3 = 8;
+        // Example string containing a date
+        String dateString = "2023-11-14";
                                 
-        int smallestNumber = findSmallestNumber(num1, num2, num3);
+        // Define the date format to match the pattern in the string
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                                 
-        System.out.println("The smallest number among " + num1 + ", " + num2 + ", and " + num3 + " is: " + smallestNumber);
+        try {
+            // Parse the string to a Date object using the defined format
+            Date convertedDate = dateFormat.parse(dateString);
+                                
+            // Print the result
+            System.out.println("Converted date: " + convertedDate);
+        } catch (ParseException e) {
+            // Handle the exception (e.g., print an error message)
+            System.out.println("Error: Unable to convert the string to a date.");
+        }
     }
-}
+}                                
 </pre>
                             <p class='fs-6 fw-medium pt-5'>Output:</p>
                             <p class='fw-normal border border-5 rounded-4 p-3'>
-                                The smallest number among 10, 5, and 8 is: 5
+                                Converted date: Mon Nov 14 00:00:00 UTC 2023
                             </p>
                             </p>
                         </div>
