@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <style>
+        h4 {
+            text-align: center;
+            margin-bottom: 3%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid bg">
+        <div class="row header1 position-fixed z-0"></div>
+        <div class="row position-relative z-1 cont">
+            <div class="col-3 p-5">
+                <div id="list-example" class="list-group">
+                    <a class="list-group-item list-group-item-action" href="#list-item-1">Basics</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-2">Data Conversion</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-3">Functions</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-4">1D Arrays</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-5">2D Arrays</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-6">Strings</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-7">OOPs</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-8">Inheritance</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-9">Exception Handling</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-10">Interfaces</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-11">Packages</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-12">Input/Output</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-13">Delegation Event Model</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-14">Awt</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-15">Applets</a>
+                    <a class="list-group-item list-group-item-action" href="#list-item-16">JDBC</a>
+                </div>
+            </div>
+            <div class="col-9 p-0 d-flex" id="section">
+                <div class="col-11 p-4">
+                    <div class="row">
+                        <div class="col text-center">
+                            <p class="fs-1 fw-bold my-0">Java Tutorial</p>
+                            <p class="fs-4 fw-medium my-0">Practice Questions</p>
+                            <p class="fs-5 fw-normal my-0">Multithreading</p>
+                        </div>
+                    </div>
+                    <div class="row px-5 mx-5 list-y" style="width: 60vw; height: 75vh;">
+                        <div class="col list-y p-5 mx-5 pt-4 list-y">
+                            <p class='fs-5 fw-semibold'>6. Write a Java program to implement a concurrent web crawler that crawls multiple websites simultaneously using threads.</p>
+                            <p class='fs-6 fw-medium'>Code:</p>
+
+                            <pre class='fw-normal border border-5 rounded-4 p-3 list'>
+import java.io.IOException;
+import java.net.URL;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+                                
+public class ConcurrentWebCrawler {
+                                
+    private static final int MAX_DEPTH = 2;
+    private static final int MAX_THREADS = 5;
+    private static Set<String> visitedUrls = new HashSet<>();
+                                
+    public static void main(String[] args) {
+        String seedUrl = "file:///path/to/your/example.html"; // Replace with the correct path to your HTML file
+        crawl(seedUrl, 0);
+    }
+                                
+    private static void crawl(String url, int depth) {
+        if (depth > MAX_DEPTH || visitedUrls.contains(url)) {
+            return;
+        }
+                                
+        System.out.println("Crawling: " + url + " at depth " + depth);
+                                
+        visitedUrls.add(url);
+                                
+        try {
+            String pageContent = fetchPage(url);
+            processPage(pageContent);
+                                
+            Set<String> links = extractLinks(pageContent);
+                                
+            ExecutorService executor = Executors.newFixedThreadPool(MAX_THREADS);
+                                
+            for (String link : links) {
+                executor.execute(() -> crawl(link, depth + 1));
+            }
+                                
+            executor.shutdown();
+            executor.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+                                
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+                                
+    private static String fetchPage(String url) throws IOException {
+        // Simulate fetching the web page content using java.net.URL
+        // In a real-world scenario, you would use a library like HttpClient
+        // to make HTTP requests.
+        return "Content of " + url;
+    }
+                                
+    private static Set<String> extractLinks(String pageContent) {
+        // Simulate extracting links from the page content
+        Set<String> links = new HashSet<>();
+        links.add("http://example.com/link1");
+        links.add("http://example.com/link2");
+        links.add("http://example.com/link3");
+        return links;
+    }
+                                
+    private static void processPage(String pageContent) {
+        // Simulate processing the web page content
+        System.out.println("Processing page: " + pageContent);
+    }
+} 
+</pre>
+                            <p class='fs-6 fw-medium pt-5'>Output:</p>
+                            <p class='fw-normal border border-5 rounded-4 p-3'>
+                                Crawling: file:///path/to/your/example.html at depth 0 <br>
+Processing page: Content of file:///path/to/your/example.html <br>
+Crawling: http://example.com/link1 at depth 1 <br>
+Crawling: http://example.com/link2 at depth 1 <br>
+Crawling: http://example.com/link3 at depth 1 <br>
+Processing page: Content of http://example.com/link1 <br>
+Processing page: Content of http://example.com/link2 <br>
+Processing page: Content of http://example.com/link3 <br>
+Crawling: http://example.com/link1 at depth 2 <br>
+Crawling: http://example.com/link2 at depth 2 <br>
+Crawling: http://example.com/link3 at depth 2 <br>
+Processing page: Content of http://example.com/link1 <br>
+Processing page: Content of http://example.com/link2 <br>
+Processing page: Content of http://example.com/link3 <br>
+                            </p>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1 text-center border border-2 border-top-0 border-end-0 border-buttom-0 border-dark">
+                    <p class="fw-medium bg mb-4 mt-3 py-3 text-primary" style="font-size: 55px;">B</p>
+                    <ul class="nav text-center tb-text ms-2 p-0">
+                        <li class="nav-item p-0">
+                            <a class="nav-link active m-0 p-4 pt-5" id="home-link" aria-current="page" href="index.html"
+                                style="letter-spacing: 2.5px;">Home</a>
+                        </li>
+                        <li class="nav-item p-0">
+                            <a class="nav-link  m-0 p-4 pt-5" href="index.html" id="tutorial-link"
+                                style="letter-spacing: 2.5px;">Tutorials</a>
+                        </li>
+                        <li class="nav-item p-0">
+                            <a class="nav-link m-0 p-4 pt-5" href="index.html" id="about-link"
+                                style="letter-spacing: 2.5px;">About</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
